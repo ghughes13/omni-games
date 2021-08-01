@@ -1,4 +1,4 @@
-import { Client } from "discord.js";
+import { Client, User } from "discord.js";
 import testCommand from "./commands/testCommand.js";
 import dotenv from "dotenv";
 
@@ -20,6 +20,17 @@ client.on("message", (message) => {
   if (command === `ping`) {
     testCommand(message);
   }
+
+  if (command === `setup`) {
+    message.channel.send("Please enter your steamID");
+
+    client.on("message", (message) =>{
+      if(!message.author.id === User) return;
+      const userInput = message.content
+      console.log(userInput);
+    })
+  }
+  
 });
 
 client.login(process.env.BOT_TOKEN);
