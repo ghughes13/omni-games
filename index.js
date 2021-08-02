@@ -1,6 +1,8 @@
 import { Client, User } from "discord.js";
 import testCommand from "./commands/testCommand.js";
+import setup from "./commands/setup.js";
 import dotenv from "dotenv";
+
 
 const client = new Client();
 const PREFIX = "!";
@@ -22,13 +24,7 @@ client.on("message", (message) => {
   }
 
   if (command === `setup`) {
-    message.channel.send("Please enter your steamID");
-
-    client.on("message", (message) =>{
-      if(!message.author.id === User) return;
-      const userInput = message.content
-      console.log(userInput);
-    })
+    setup(message);
   }
   
 });
