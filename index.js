@@ -1,6 +1,8 @@
-import { Client } from "discord.js";
+import { Client} from "discord.js";
 import testCommand from "./commands/testCommand.js";
+import setup from "./commands/setup.js";
 import dotenv from "dotenv";
+
 
 const client = new Client();
 const PREFIX = "!";
@@ -20,6 +22,11 @@ client.on("message", (message) => {
   if (command === `ping`) {
     testCommand(message);
   }
+
+  if (command === `setup`) {
+    setup(message, args);
+  }
+  
 });
 
 client.login(process.env.BOT_TOKEN);
