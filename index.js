@@ -1,6 +1,7 @@
-import { Client} from "discord.js";
+import { Client } from "discord.js";
 import testCommand from "./commands/testCommand.js";
-import setup from "./commands/setup.js";
+import setupCommand from "./commands/setupCommand.js";
+import helpCommand from "./commands/helpCommand.js"
 import dotenv from "dotenv";
 
 
@@ -10,7 +11,7 @@ const PREFIX = "!";
 dotenv.config();
 
 client.on("ready", () => {
-  console.log(`Running...`);
+  console.log(`Bot is now Online...`);
 });
 
 client.on("message", (message) => {
@@ -23,8 +24,12 @@ client.on("message", (message) => {
     testCommand(message);
   }
 
+  if (command === 'help') {
+    helpCommand(message);
+  }
+
   if (command === `setup`) {
-    setup(message, args);
+    setupCommand(message, args);
   }
   
 });
