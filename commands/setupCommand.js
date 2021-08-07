@@ -16,8 +16,8 @@ const setupCommand = (message, args) => {
       `Please enter Steam id as - !setup yoursteamid`
     );
   } else {
-    if (isNaN(args[0])) {
-      message.channel.send(args[0] + " is not a number");
+    if (isNaN(userSteamId)) {
+      message.channel.send(userSteamId + " is not a number");
       return;
     }
 
@@ -25,7 +25,7 @@ const setupCommand = (message, args) => {
       `https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${process.env.STEAM_KEY}&steamids=${steamId}`
     )
       .then((data) => data.json())
-      .then((data) => {
+      .then ( (data) => 
         {
           if (
             data &&
@@ -36,8 +36,10 @@ const setupCommand = (message, args) => {
             message.channel.send(`Your Steam Id has been saved`);
           } 
           else message.channel.send(`Please enter a valid Steam id`);
-        }
-      });
+        })
+    .catch(err => {
+      message.channel.send(`There was an error,so please try again`)
+    });
   }
 };
 export default setupCommand;
