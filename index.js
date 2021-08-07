@@ -1,7 +1,8 @@
 import { Client } from "discord.js";
 import testCommand from "./commands/testCommand.js";
 import setupCommand from "./commands/setupCommand.js";
-import helpCommand from "./commands/helpCommand.js"
+import helpCommand from "./commands/helpCommand.js";
+import getOwnedGames from "./commands/getOwnedGames.js";
 import dotenv from "dotenv";
 
 
@@ -24,14 +25,17 @@ client.on("message", (message) => {
     testCommand(message);
   }
 
-  if (command === 'help') {
+  if (command === "help") {
     helpCommand(message);
   }
 
   if (command === `setup`) {
     setupCommand(message, args);
   }
-  
+
+  if (command === `check`) {
+    getOwnedGames();
+  }
 });
 
 client.login(process.env.BOT_TOKEN);
