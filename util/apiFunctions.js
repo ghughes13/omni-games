@@ -17,12 +17,12 @@ mongoose.connection.on("connected", () => {});
 
 const Schema = mongoose.Schema;
 
-const omniGamesSchema = new Schema({
+const omniGamesSchemas = new Schema({
   discordId: Number,
   steamId: Number,
 });
 
-const omniGamesModel = mongoose.model("omniGamesSchema", omniGamesSchema);
+const omniGamesModel = mongoose.model("omniGamesSchemas", omniGamesSchemas);
 
 const createNewUser = (discordId, steamId) => {
   const newUserMap = new omniGamesModel({
