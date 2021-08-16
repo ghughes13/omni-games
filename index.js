@@ -3,6 +3,7 @@ import testCommand from "./commands/testCommand.js";
 import setupCommand from "./commands/setupCommand.js";
 import helpCommand from "./commands/helpCommand.js";
 import getOwnedGames from "./commands/getOwnedGames.js";
+import playGames from './commands/playGames.js'
 import dotenv from "dotenv";
 
 
@@ -35,6 +36,9 @@ client.on("message", (message) => {
 
   if (command === `check`) {
     getOwnedGames();
+  }
+  if (command === 'play'){
+    playGames(message)
   }
 });
 
