@@ -47,4 +47,14 @@ const findUser = (discordId) => {
     });
 };
 
-export { createNewUser, findUser };
+const findMultipleUsers = (discordIds) => {
+  omniGamesModel
+    .find({ discordId: { $in: [...discordIds] } }) //Each discordId in discordIds should === String
+    .exec()
+    .then((data) => data)
+    .catch((err) => {
+      console.error(err);
+    });
+};
+
+export { createNewUser, findUser, findMultipleUsers };
