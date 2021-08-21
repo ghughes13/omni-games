@@ -10,10 +10,13 @@ const playGames = (message) => {
 
     const userArray =  message.mentions.users.array();
     var playerArray=[];
-    playerArray[userArray.length]= message.author.id;
+    playerArray[userArray.length]= message.author.id;//stores the id of the user who runs the play command
+    
     for (let i=0; i<userArray.length; i++){
         playerArray[i] = userArray[i].id;
+        
     }
+    findMultipleUsers(playerArray);
     
 
 };

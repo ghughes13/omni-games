@@ -41,7 +41,7 @@ const findUser = (discordId) => {
   omniGamesModel
     .find({ discordId: discordId }) //discordId type should === String
     .exec()
-    .then((data) => data)
+    .then((data) => console.log(data[0].discordId))
     .catch((err) => {
       console.error(err);
     });
