@@ -14,9 +14,8 @@ const playGames = (message) => {
     
     for (let i=0; i<userArray.length; i++){
         playerArray[i] = userArray[i].id;
-        
+        findUser(playerArray[i]);
     }
-    findMultipleUsers(playerArray);
     
 
 };
