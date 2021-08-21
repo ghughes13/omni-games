@@ -1,4 +1,5 @@
 import { Client, Message } from "discord.js";
+import { findMultipleUsers, findUser } from "../util/apiFunctions.js";
 
 const client = new Client();
 
@@ -9,10 +10,13 @@ const playGames = (message) => {
 
     const userArray =  message.mentions.users.array();
     var playerArray=[];
-    for (let i=0; i< userArray.length; i++){
+    playerArray[userArray.length]= message.author.id;
+    for (let i=0; i<userArray.length; i++){
         playerArray[i] = userArray[i].id;
+        findUser(playerArray[i]);
     }
     console.log(playerArray);
+    
 
 };
 
