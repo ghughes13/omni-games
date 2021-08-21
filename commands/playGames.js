@@ -13,9 +13,7 @@ const playGames = (message) => {
     playerArray[userArray.length]= message.author.id;
     for (let i=0; i<userArray.length; i++){
         playerArray[i] = userArray[i].id;
-        findUser(playerArray[i]);
     }
-    console.log(playerArray);
     
 
 };
