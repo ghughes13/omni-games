@@ -41,21 +41,20 @@ const findUser = (discordId) => {
   omniGamesModel
     .find({ discordId: discordId }) //discordId type should === String
     .exec()
-    .then((data) => data[0].discordId)
+    .then((data) => data)
     .catch((err) => {
       console.error(err);
     });
 };
 
-const findMultipleUsers = (discordIds) => {
+const findMultipleUsers = (discordIds, callback) => {
   omniGamesModel
     .find({ discordId: { $in: [...discordIds] } }) //Each discordId in discordIds should === String
     .exec()
-    .then((data) => console.log(data))
+    .then((data) => callback(data))
     .catch((err) => {
-      console.error(err); 
+      console.error(err);
     });
 };
 
 export { createNewUser, findUser, findMultipleUsers };
-  
