@@ -3,8 +3,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const getOwnedGames = () => {
-const steamId = `76561198244441968`;
+const getOwnedGames = (steamId) => {
+// const steamId = `76561198244441968`;
     var listOfGames = [];
 
     fetch(
@@ -23,11 +23,16 @@ const steamId = `76561198244441968`;
             ) {
               let obj = data.response.games[i].name;
               listOfGames.push(obj);
+              console.log(obj)
             }
           }
         }
 
-      );
+      )
+      .catch((err) => {
+        console.error(err);
+      });
+      
     }
 
 export default getOwnedGames;

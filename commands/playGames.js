@@ -1,5 +1,6 @@
 import { Client, Message } from "discord.js";
 import { findMultipleUsers, findUser } from "../util/apiFunctions.js";
+import getOwnedGames from "./getOwnedGames.js";
 
 const client = new Client();
 
@@ -24,7 +25,9 @@ const playGames = (message) => {
         else{
             console.log(playerArray.length)
             for(let j=0; j<playerArray.length; j++){
-                console.log(users[j].steamId)
+                getOwnedGames(users[j].steamId)
+                console.log('done')
+
             }
         }
          
