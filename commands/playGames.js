@@ -14,9 +14,24 @@ const playGames = (message) => {
     
     for (let i=0; i<userArray.length; i++){
         playerArray[i] = userArray[i].id;
-        
     }
-    findMultipleUsers(playerArray)
+
+    const logUsers = (users) => {
+
+        if (playerArray.length !== users.length){
+            message.channel.send(`Please set up your Steam ID`);
+        }
+        else{
+            console.log(playerArray.length)
+            for(let j=0; j<playerArray.length; j++){
+                console.log(users[j].steamId)
+            }
+        }
+         
+    }
+
+
+    findMultipleUsers(playerArray, logUsers)
     
 
 };
