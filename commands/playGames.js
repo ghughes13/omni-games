@@ -1,43 +1,34 @@
-import { Client, Message } from "discord.js";
-import { findMultipleUsers, findUser } from "../util/apiFunctions.js";
+import { findMultipleUsers } from "../util/apiFunctions.js";
 import getOwnedGames from "./getOwnedGames.js";
 
-const client = new Client();
-
 const playGames = (message) => {
+  if (!message.mentions.users.first()) {
+    return message.channel.send(`You have not mentioned users.`);
+  }
 
+  const userArray = message.mentions.users.array();
+  let playerArray = [];
+  playerArray[userArray.length] = message.author.id;
 
-     if (!message.mentions.users.first()) return message.channel.send(`You have not mentioned users.`); 
+  for (let i = 0; i < userArray.length; i++) {
+    playerArray[i] = userArray[i].id;
+  }
 
-    const userArray =  message.mentions.users.array();
-    var playerArray=[];
-    playerArray[userArray.length]= message.author.id;//stores the id of the user who runs the play command
-    
-    for (let i=0; i<userArray.length; i++){
-        playerArray[i] = userArray[i].id;
+  const getPlayerGames = async (users) => {
+    if (playerArray.length !== users.length) {
+      message.channel.send(`Please set up your Steam ID`);
+    } else {
+      let arrayOfGamePromises = [];
+
+      for (let j = 0; j < playerArray.length; j++) {
+        arrayOfGamePromises.push(getOwnedGames(users[j].steamId));
+      }
+
+      Promise.all(arrayOfGamePromises).then((data) => console.log(data));
     }
+  };
 
-    const logUsers = (users) => {
-
-        if (playerArray.length !== users.length){
-            message.channel.send(`Please set up your Steam ID`);
-        }
-        else{
-            console.log(playerArray.length)
-            for(let j=0; j<playerArray.length; j++){
-                getOwnedGames(users[j].steamId)
-                console.log('done')
-
-            }
-        }
-         
-    }
-
-
-    findMultipleUsers(playerArray, logUsers)
-    
-
+  findMultipleUsers(playerArray, getPlayerGames);
 };
 
-export default playGames ;
-
+export default playGames;
