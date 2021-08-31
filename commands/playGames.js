@@ -24,7 +24,40 @@ const playGames = (message) => {
         arrayOfGamePromises.push(getOwnedGames(users[j].steamId));
       }
 
-      Promise.all(arrayOfGamePromises).then((data) => console.log(data));
+      Promise.all(arrayOfGamePromises).then((data) => {
+        containsAll(data);
+        function containsAll(data) {
+          var output = [];
+          var cntObj = {};
+          var array, item, cnt;
+
+          for (var i = 0; i < data.length; i++) {
+            array = data[i];
+
+            for (var j = 0; j < array.length; j++) {
+              item = "-" + array[j];
+              cnt = cntObj[item] || 0;
+
+              if (cnt == i) {
+                cntObj[item] = cnt + 1;
+              }
+            }
+          }
+
+          for (item in cntObj) {
+            if (cntObj.hasOwnProperty(item) && cntObj[item] === data.length) {
+              output.push(item.substring(1));
+            }
+          }
+          console.log(output);
+          if (output.length != 0) {
+            let randomNumber = Math.floor(Math.random() * output.length - 1);
+            message.channel.send(output[randomNumber]);
+          } else {
+            message.channel.send("You dont have any games in common ;(");
+          }
+        }
+      });
     }
   };
 
