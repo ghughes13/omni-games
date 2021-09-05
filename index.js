@@ -11,7 +11,7 @@ const PREFIX = "!";
 dotenv.config();
 
 client.on("ready", () => {
-  console.log(`Bot is now Online...`);
+  console.log(`Bot is now Online....`);
 });
 
 client.on("message", (message) => {
