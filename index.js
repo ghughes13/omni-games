@@ -1,5 +1,4 @@
 import { Client } from "discord.js";
-import testCommand from "./commands/testCommand.js";
 import setupCommand from "./commands/setupCommand.js";
 import helpCommand from "./commands/helpCommand.js";
 import getOwnedGames from "./commands/getOwnedGames.js";
@@ -12,7 +11,7 @@ const PREFIX = "!";
 dotenv.config();
 
 client.on("ready", () => {
-  console.log(`Bot is now Online...`);
+  console.log(`Bot is now Online....`);
 });
 
 client.on("message", (message) => {
@@ -20,10 +19,6 @@ client.on("message", (message) => {
 
   const args = message.content.slice(PREFIX.length).trim().split(/ +/);
   const command = args.shift().toLocaleLowerCase();
-
-  if (command === `ping`) {
-    testCommand(message);
-  }
 
   if (command === "help") {
     helpCommand(message);
