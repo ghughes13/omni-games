@@ -47,13 +47,13 @@ const findUser = (discordId) => {
     });
 };
 
-const findMultipleUsers = (discordIds) => {
+const findMultipleUsers = (discordIds, callback) => {
   omniGamesModel
     .find({ discordId: { $in: [...discordIds] } }) //Each discordId in discordIds should === String
     .exec()
-    .then((data) => data)
+    .then((data) => callback(data))
     .catch((err) => {
-      console.error(err); 
+      console.error(err);
     });
 };
 
