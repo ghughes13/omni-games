@@ -12,15 +12,15 @@
 
 ## Bot Commands
 1. Help Command
-<img src="helpCommand.PNG" alt="Command screenshot preview" />
+<img src="/Images/helpCommand.PNG" alt="Command screenshot preview" />
 2. Setup Command 
-<img src="setupID.PNG" alt="Website preview"/>
+<img src="/Images/setupID.PNG" alt="Website preview"/>
 3. Play Command 
-<img src="gameFound.PNG" alt="Command screenshot preview" />
+<img src="/Images/gameFound.PNG" alt="Command screenshot preview" />
 
 ## Bot errors
 1. Steam ID not found (first setup your steam ID)
-<img src="setupSteamId.PNG" alt="Command screenshot preview" />
+<img src="/Images/setupSteamId.PNG" alt="Command screenshot preview" />
 
 2. No games in common found
-<img src="noGameFound.PNG" alt="Command screenshot preview" />
+<img src="/Images/noGameFound.PNG" alt="Command screenshot preview" />
